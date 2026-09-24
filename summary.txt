@@ -1,0 +1,1 @@
+It enables machines to perform tasks that normally require human intelligence. Machine learning is an important part of artificial intelligence. AI helps organizations analyze data and make better decisions.
