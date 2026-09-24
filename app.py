@@ -1,3 +1,7 @@
+import nltk
+nltk.download('punkt')
+nltk.download('punkt_tab')
+nltk.download('stopwords')
 from flask import Flask, render_template, request, send_file
 import re
 import heapq
