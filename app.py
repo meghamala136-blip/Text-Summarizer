@@ -1,7 +1,16 @@
 import nltk
-nltk.download('punkt')
-nltk.download('punkt_tab')
-nltk.download('stopwords')
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt', quiet=True)
+    nltk.download('punkt_tab', quiet=True)
+    nltk.download('stopwords', quiet=True)
+
+# Ekkadi nunchi mee remaining imports (Flask, etc.) untayi:
+from flask import Flask, render_template, request
+# ... rest of your code ...
+
+
 from flask import Flask, render_template, request, send_file
 import re
 import heapq
