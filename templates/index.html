@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,8 +45,9 @@
             </h1>
 
             <p>
-                Transform long text into meaningful and
-                concise summaries using Natural Language Processing.
+                Transform long text or PDF documents into
+                meaningful and concise summaries using
+                Natural Language Processing.
             </p>
 
             <a href="#summarizer" class="start-btn">
@@ -70,16 +70,21 @@
             </h2>
 
             <p>
-                Enter a long text and generate an automatic
-                summary using frequency-based NLP summarization.
+                Enter text or upload a PDF document and
+                generate an automatic summary.
             </p>
 
         </div>
 
 
-        <form method="POST">
+        <!-- IMPORTANT: enctype is required for PDF upload -->
+
+        <form method="POST"
+              enctype="multipart/form-data">
 
             <div class="input-card">
+
+                <!-- Text Input -->
 
                 <label>
                     📄 Enter Text
@@ -87,8 +92,38 @@
 
                 <textarea
                     name="text"
-                    placeholder="Enter your long text here..."
-                    required>{{ input_text }}</textarea>
+                    placeholder="Enter your long text here...">{{ input_text }}</textarea>
+
+
+                <!-- OR -->
+
+                <div class="or-text">
+                    <span>OR</span>
+                </div>
+
+
+                <!-- PDF Upload -->
+
+                <label>
+                    📕 Upload PDF
+                </label>
+
+                <input
+                    type="file"
+                    name="pdf"
+                    accept=".pdf">
+
+
+                {% if pdf_name %}
+
+                <p class="file-name">
+                    ✅ Selected PDF: {{ pdf_name }}
+                </p>
+
+                {% endif %}
+
+
+                <!-- Generate Button -->
 
                 <div class="button-area">
 
@@ -103,6 +138,8 @@
         </form>
 
 
+        <!-- Summary Output -->
+
         {% if summary %}
 
         <div class="output-card">
@@ -115,6 +152,7 @@
 
             </div>
 
+
             <div class="summary-box">
 
                 <p id="summaryText">
@@ -126,20 +164,30 @@
 
             <div class="action-buttons">
 
-                <button onclick="copySummary()">
+                <!-- Copy -->
+
+                <button type="button"
+                        onclick="copySummary()">
+
                     📋 Copy
+
                 </button>
 
+
+                <!-- Download -->
 
                 <form action="/download"
                       method="POST">
 
-                    <input type="hidden"
-                           name="summary"
-                           value="{{ summary }}">
+                    <input
+                        type="hidden"
+                        name="summary"
+                        value="{{ summary }}">
 
                     <button type="submit">
+
                         ⬇️ Download Summary
+
                     </button>
 
                 </form>
@@ -198,7 +246,9 @@
 
             <div class="info-card">
 
-                <h3>🔤 Natural Language Processing</h3>
+                <h3>
+                    🔤 Natural Language Processing
+                </h3>
 
                 <p>
                     NLP is a branch of Artificial Intelligence
@@ -211,7 +261,9 @@
 
             <div class="info-card">
 
-                <h3>📄 Text Summarization</h3>
+                <h3>
+                    📄 Text Summarization
+                </h3>
 
                 <p>
                     Text summarization automatically creates
@@ -224,7 +276,9 @@
 
             <div class="info-card">
 
-                <h3>⚙️ Algorithm</h3>
+                <h3>
+                    ⚙️ Algorithm
+                </h3>
 
                 <p>
                     This project uses frequency-based
@@ -243,7 +297,9 @@
 
     <footer>
 
-        <h3>🧠 NLP Text Summarization</h3>
+        <h3>
+            🧠 NLP Text Summarization
+        </h3>
 
         <p>
             Full-Stack NLP Mini Project
@@ -277,4 +333,3 @@
 </body>
 
 </html>
-```
